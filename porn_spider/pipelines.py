@@ -36,15 +36,16 @@ class PornSpiderPipeline(object):
             line = line + json.dumps(url, ensure_ascii=False) + '\n'
 
         self.file.write(line)
+
         from_addr = 'mclaren1234@163.com'
         password = 'ly19940306'
         to_addr = '342447974@qq.com'
         smtp_server = 'smtp.163.com'
 
-        msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
-        msg['From'] = u'mclaren'
-        msg['To'] = u'sam'
-        msg['Subject'] = Header(u'1024', 'utf-8').encode()
+        msg = MIMEText(line, 'plain', 'utf-8')
+        msg['From'] = 'mclaren1234@163.com'
+        msg['To'] = '342447974@qq.com'
+        msg['Subject'] = Header('1024', 'utf-8').encode()
 
         server = smtplib.SMTP(smtp_server, 25)
         server.set_debuglevel(1)
