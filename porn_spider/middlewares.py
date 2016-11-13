@@ -4,4 +4,4 @@ class ProxyMiddleware(object):
         # Set the location of the proxy
         request.meta['proxy'] = "45.32.26.202:8388"
 
-        proxy_user_pass = ""
+        # proxy_user_pass = ""
