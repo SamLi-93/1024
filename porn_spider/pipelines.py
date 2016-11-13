@@ -4,6 +4,11 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
+from email import encoders
+from email.header import Header
+from email.mime.text import MIMEText
+from email.utils import parseaddr, formataddr
+import smtplib
 
 import json
 import codecs
@@ -33,4 +38,19 @@ class PornSpiderPipeline(object):
         self.file.write(line)
 
     def close_spider(self, spider):
+        from_addr = 'mclaren1234@163.com'
+        password = 'ly19940306'
+        to_addr = '342447974@qq.com'
+        smtp_server = 'smtp.163.com'
+
+        msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
+        msg['From'] = u'mclaren'
+        msg['To'] = u'sam'
+        msg['Subject'] = Header(u'1024', 'utf-8').encode()
+
+        server = smtplib.SMTP(smtp_server, 25)
+        server.set_debuglevel(1)
+        server.login(from_addr, password)
+        server.sendmail(from_addr, [to_addr], msg.as_string())
+        server.quit()
         self.file.close()
