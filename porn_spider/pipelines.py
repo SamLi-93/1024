@@ -23,11 +23,8 @@ class PornSpiderPipeline(object):
             print "~~~~~~~~~~~~~~~~~~~\n"
             print i
             print "~~~~~~~~~~~~~~~~~~~~\n"
-
-        # block={"":""}
-        #        line=json.dumps(block)
         line = 'the list:' + '\n'
-        for i in range(len(item['url'])):
+        for i in range(len(item['movie_name'])):
             movie_name = {"movie_name": item['movie_name'][i]}
             url = {"url": item['url'][i]}
             line = line + json.dumps(movie_name, ensure_ascii=False) + '\n'
