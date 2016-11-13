@@ -26,9 +26,9 @@ class PornSpiderPipeline(object):
         line = 'the list:' + '\n'
         for i in range(len(item['movie_name'])):
             movie_name = {"movie_name": item['movie_name'][i]}
-            url = {"url": item['url'][i]}
+            url = {"url": 'http://cl.miicool.info/'+item['url'][i]}
             line = line + json.dumps(movie_name, ensure_ascii=False) + '\n'
-            line = line + json.dumps('http://cl.miicool.info/'+url, ensure_ascii=False) + '\n'
+            line = line + json.dumps(url, ensure_ascii=False) + '\n'
 
         self.file.write(line)
 
