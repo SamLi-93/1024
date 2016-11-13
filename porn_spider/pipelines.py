@@ -27,11 +27,7 @@ class PornSpiderPipeline(object):
         # block={"":""}
         #        line=json.dumps(block)
         line = 'the list:' + '\n'
-        for i in range(len(item['quote'])):
-            #       	try:
-            #                    movie_name={"movie_name":str(item['movie_name'][2*i])}
-            #                except IndexError:
-            #                   movie_name={"movie_name":"no movie"}
+        for i in range(len(item['url'])):
             movie_name = {"movie_name": item['movie_name'][i]}
             url = {"url": item['url'][i]}
             line = line + json.dumps(movie_name, ensure_ascii=False) + '\n'
