@@ -18,7 +18,7 @@ class DoubanSpider(CrawlSpider):
     ]
 
     rules = (
-        Rule(LinkExtractor(allow=(r'http://cl.miicool.info/thread0806.php\?fid=22&search=&page=[1-4]')),
+        Rule(LinkExtractor(allow=(r'http://cl.miicool.info/thread0806.php\?fid=22&search=&page=[1]')),
              callback='parse_item',
              follow=True),
     )
