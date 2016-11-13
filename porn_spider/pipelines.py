@@ -36,8 +36,6 @@ class PornSpiderPipeline(object):
             line = line + json.dumps(url, ensure_ascii=False) + '\n'
 
         self.file.write(line)
-
-    def close_spider(self, spider):
         from_addr = 'mclaren1234@163.com'
         password = 'ly19940306'
         to_addr = '342447974@qq.com'
@@ -53,4 +51,6 @@ class PornSpiderPipeline(object):
         server.login(from_addr, password)
         server.sendmail(from_addr, [to_addr], msg.as_string())
         server.quit()
+
+    def close_spider(self, spider):
         self.file.close()
