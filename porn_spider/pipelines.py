@@ -32,7 +32,7 @@ class PornSpiderPipeline(object):
         for i in range(len(item['movie_name'])):
             movie_name = {"movie_name": item['movie_name'][i].decode('utf-8')}
             url = {"url": 'http://cl.miicool.info/'+item['url'][i]}
-            if re.match(r'.+17\d|.+169|\\u817f|\\u4e1d\\u889c|\\u4e1d\\u000d\\u000a', str(movie_name)):
+            if re.match(r'.+17\d|.+169|.+\\u817f|.+\\u4e1d\\u889c|.+\\u4e1d\\u000d\\u000a', str(movie_name)):
                 line = line + json.dumps(movie_name, ensure_ascii=False) + '\n'
                 line = line + json.dumps(url, ensure_ascii=False) + '\n'
 
