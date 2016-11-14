@@ -9,7 +9,7 @@ from email.header import Header
 from email.mime.text import MIMEText
 from email.utils import parseaddr, formataddr
 import smtplib
-
+import re
 import json
 import codecs
 import sys
@@ -32,8 +32,9 @@ class PornSpiderPipeline(object):
         for i in range(len(item['movie_name'])):
             movie_name = {"movie_name": item['movie_name'][i]}
             url = {"url": 'http://cl.miicool.info/'+item['url'][i]}
-            line = line + json.dumps(movie_name, ensure_ascii=False) + '\n'
-            line = line + json.dumps(url, ensure_ascii=False) + '\n'
+            if re.match(r'.+17\d|.+169'):
+                line = line + json.dumps(movie_name, ensure_ascii=False) + '\n'
+                line = line + json.dumps(url, ensure_ascii=False) + '\n'
 
         self.file.write(line)
 
